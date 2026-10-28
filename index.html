@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b91c36">
+  <meta name="description" content="Find blood donors and register to help save lives in your community.">
+  <title>LifeLink — Blood Donor Directory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="LifeLink home"><span class="brand-mark">+</span><span>Life<span class="brand-accent">Link</span></span></a>
+      <div class="nav-links"><a href="#find">Find donors</a><a href="#how">How it works</a><a href="#register">Become a donor</a></div>
+      <a class="button button-small button-primary nav-cta" href="#register">Register as donor <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-glow glow-one"></div><div class="hero-glow glow-two"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse-dot"></span> EVERY DONOR CAN MAKE A DIFFERENCE</div>
+          <h1>A little of you.<br><span>A lifetime for someone.</span></h1>
+          <p class="hero-text">Connect with blood donors in your community. One simple registration could help someone find the support they need.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#find">Find a donor <span aria-hidden="true">→</span></a><a class="button button-outline" href="#register">I want to donate</a></div>
+          <div class="trust-row"><div class="avatar-stack" aria-hidden="true"><span>♥</span><span>♥</span><span>♥</span></div><p><strong>Every registration matters</strong><br><small>Be part of a community that cares.</small></p></div>
+        </div>
+        <div class="hero-art" aria-label="Illustration of a blood donation bag">
+          <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+          <div class="art-card"><div class="art-top"><span class="tiny-label">GIVE THE GIFT OF LIFE</span><span class="heart-icon">♥</span></div>
+            <div class="blood-bag"><div class="bag-cap"></div><div class="bag-neck"></div><div class="bag-body"><div class="bag-shine"></div><div class="bag-cross">+</div><div class="blood-fill"></div></div><div class="bag-tube"></div></div>
+            <div class="art-bottom"><div><strong>Be someone's hero.</strong><small>Small act. Big impact.</small></div><span class="round-arrow">↗</span></div>
+          </div>
+          <div class="floating-note note-top"><span class="note-icon">✦</span><span><strong>Be a lifesaver</strong><small>Start with one step</small></span></div>
+          <div class="floating-note note-bottom"><span class="note-check">✓</span><span><strong>Community first</strong><small>Local connections</small></span></div>
+        </div>
+      </div>
+      <div class="hero-wave"></div>
+    </section>
+
+    <section class="quick-stats container" aria-label="About the directory">
+      <div class="stat"><span class="stat-icon">♡</span><div><strong>People helping people</strong><small>A community-powered directory</small></div></div>
+      <div class="stat"><span class="stat-icon">⌖</span><div><strong>Search by blood group</strong><small>Filter by location and need</small></div></div>
+      <div class="stat"><span class="stat-icon">✚</span><div><strong>Simple to get started</strong><small>Register in a few minutes</small></div></div>
+    </section>
+
+    <section class="section find-section" id="find">
+      <div class="container">
+        <div class="section-heading"><div><div class="eyebrow red-eyebrow">FIND YOUR CONNECTION</div><h2>Find a donor near you<span class="red-dot">.</span></h2><p>Search the directory by blood group and location.</p></div><div class="heading-side">A little help can go a long way <span>♥</span></div></div>
+        <form class="search-panel" id="searchForm">
+          <label class="field"><span>Blood group</span><select id="filterBloodGroup"><option value="">All blood groups</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+          <label class="field"><span>City or state</span><input id="filterCity" type="text" placeholder="e.g. Hyderabad" maxlength="80"></label>
+          <label class="field"><span>Search name or location</span><input id="filterSearch" type="search" placeholder="Type to search..." maxlength="80"></label>
+          <button class="button button-primary search-button" type="submit"><span aria-hidden="true">⌕</span> Search donors</button>
+        </form>
+        <div class="results-top"><div><h3>Available donors <span class="result-count" id="resultCount">—</span></h3><p id="resultsSummary">Connecting to the directory…</p></div><button class="text-button" id="clearFilters" type="button">Clear filters ↺</button></div>
+        <div id="donorGrid" class="donor-grid" aria-live="polite"><div class="loading-state"><span class="spinner"></span><p>Loading donor directory…</p></div></div>
+        <div id="pagination" class="pagination" hidden></div>
+        <div class="privacy-note"><span>ⓘ</span><p><strong>Please note:</strong> This is a student project directory, not an emergency service. Verify donor details and eligibility with a qualified medical professional. For urgent needs, contact a hospital or licensed blood bank.</p></div>
+      </div>
+    </section>
+
+    <section class="how-section section" id="how"><div class="container"><div class="section-heading centered"><div class="eyebrow red-eyebrow">A SIMPLE WAY TO HELP</div><h2>Three steps. One big difference<span class="red-dot">.</span></h2><p>Getting connected should be simple and clear.</p></div>
+      <div class="steps-grid"><article class="step-card"><div class="step-number">01</div><div class="step-icon pink-icon">♡</div><h3>Register</h3><p>Donors add their blood group and location to the directory.</p></article><article class="step-card"><div class="step-number">02</div><div class="step-icon red-icon">⌕</div><h3>Search</h3><p>People can filter available donors by blood group and city.</p></article><article class="step-card"><div class="step-number">03</div><div class="step-icon peach-icon">✦</div><h3>Connect carefully</h3><p>Contact a donor directly and confirm details before taking action.</p></article></div>
+    </div></section>
+
+    <section class="register-section section" id="register"><div class="container register-grid"><div class="register-copy"><div class="eyebrow">YOUR NEXT STEP COULD HELP SOMEONE</div><h2>Become a part of<br>something <span>meaningful.</span></h2><p>Share your details to join the directory. You can update your availability or remove your listing later using the management options on your donor card.</p><div class="register-points"><div><span>✓</span> A few minutes to register</div><div><span>✓</span> Update availability any time</div><div><span>✓</span> Community-driven connection</div></div><div class="quote-card"><span>“</span><p>Sometimes the smallest act of kindness is the biggest gift of all.</p></div></div>
+      <div class="form-card"><div class="form-heading"><div><h3>Donor registration</h3><p>Fields marked * are required.</p></div><span class="form-heart">♥</span></div>
+        <form id="donorForm" novalidate>
+          <input type="hidden" id="donorId">
+          <div class="form-row"><label class="field"><span>Full name *</span><input id="fullName" name="full_name" required minlength="2" maxlength="80" placeholder="Your full name" autocomplete="name"></label><label class="field"><span>Blood group *</span><select id="bloodGroup" name="blood_group" required><option value="">Choose group</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label></div>
+          <div class="form-row"><label class="field"><span>Phone number *</span><input id="phone" name="phone" type="tel" required maxlength="20" placeholder="+91 98765 43210" autocomplete="tel"></label><label class="field"><span>Email (optional)</span><input id="email" name="email" type="email" maxlength="254" placeholder="you@example.com" autocomplete="email"></label></div>
+          <div class="form-row"><label class="field"><span>City *</span><input id="city" name="city" required minlength="2" maxlength="80" placeholder="Your city" autocomplete="address-level2"></label><label class="field"><span>State *</span><input id="state" name="state" required minlength="2" maxlength="80" placeholder="Your state" autocomplete="address-level1"></label></div>
+          <div class="form-row"><label class="field"><span>Last donation date</span><input id="lastDonationDate" name="last_donation_date" type="date"></label><label class="field"><span>Availability *</span><select id="availability" name="availability" required><option value="available">Available to be contacted</option><option value="unavailable">Not available currently</option></select></label></div>
+          <label class="field"><span>Notes (optional)</span><textarea id="notes" name="notes" rows="3" maxlength="500" placeholder="Anything you would like to share (max 500 characters)"></textarea></label>
+          <label class="consent-check"><input id="consent" type="checkbox" required><span>I agree to share these details in this student directory and understand that contact details may be visible to visitors. *</span></label>
+          <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
+          <div class="form-actions"><button class="button button-primary submit-button" id="submitDonor" type="submit">Join the donor directory <span>→</span></button><button class="button button-outline cancel-edit" id="cancelEdit" type="button" hidden>Cancel edit</button></div>
+          <p class="form-footnote">Please only register if you consent to being contacted. Donation eligibility must be assessed by a medical professional.</p>
+        </form>
+      </div>
+    </div></section>
+  </main>
+
+  <footer class="footer"><div class="container footer-top"><a class="brand footer-brand" href="#home"><span class="brand-mark">+</span><span>Life<span class="brand-accent">Link</span></span></a><p>Connecting kind hearts with people who need them.</p><a href="#home" class="back-top">Back to top ↑</a></div><div class="container footer-bottom"><span>© <span id="currentYear"></span> LifeLink · Blood Donor Directory</span><span>Made with care for a healthier community ♥</span></div></footer>
+  <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+  <dialog id="deleteDialog" class="confirm-dialog"><form method="dialog"><h3>Remove donor listing?</h3><p>This permanently deletes this listing from the directory. This action cannot be undone.</p><div class="dialog-actions"><button class="button button-outline" value="cancel">Keep listing</button><button class="button button-danger" id="confirmDelete" value="confirm">Delete listing</button></div></form></dialog>
+</body>
+</html>
